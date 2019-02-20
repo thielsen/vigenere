@@ -1,4 +1,5 @@
-from vigenere import *
+from vigenere import VigenereCipher
+from vigenere import combine_character
 
 def test_encode():
       cipher = VigenereCipher("DONKEY")
@@ -23,3 +24,8 @@ def test_encode_mixedcase():
 def test_combine_character():
       assert combine_character("F", "T") == "Y"
       assert combine_character("O", "R") == "F"
+
+def test_extend_keyword():
+       cipher = VigenereCipher("DONKEY")
+       extended = cipher.extend_keyword(20)
+       assert extended == "DONKEYDONKEYDONKEYDO"
