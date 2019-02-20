@@ -34,3 +34,8 @@ def test_extend_keyword():
 def test_decode_separate_character():
       assert separate_character("Y", "T") == "F"
       assert separate_character("F", "R") == "O"
+
+def test_decode():
+      cipher = VigenereCipher("DONKEY") 
+      decoded = cipher.decode("WSFDILFCQSRE")
+      assert decoded == "TESTENCODING"

@@ -13,7 +13,14 @@ class VigenereCipher:
            keyword = self.extend_keyword(len(plaintext))
            for p,k in zip(plaintext, keyword):
                cipher.append(combine_character(p,k))
-           return "".join(cipher)    
+           return "".join(cipher)   
+
+    def decode(self, ciphertext):
+           plain = []
+           keyword = self.extend_keyword(len(ciphertext))
+           for p,k in zip(ciphertext, keyword):
+               plain.append(separate_character(p,k))
+           return "".join(plain) 
 
 def combine_character(plain, keyword):
     plain = plain.upper()
