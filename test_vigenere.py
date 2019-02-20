@@ -1,6 +1,7 @@
-from vigenere import VigenereCipher
-from vigenere import combine_character
-from vigenere import separate_character
+from app.vigenere import VigenereCipher
+from app.vigenere import combine_character
+from app.vigenere import separate_character
+
 
 def test_encode():
     cipher = VigenereCipher("DONKEY")
