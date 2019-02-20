@@ -3,6 +3,9 @@ class VigenereCipher:
         self.keyword = keyword
     def encode(self, plaintext):
         return "Test encode"
+    def extend_keyword(self, number):
+        repeats = number // len(self.keyword) + 1
+        return (self.keyword * repeats)[:number]
 
 def combine_character(plain, keyword):
     plain = plain.upper()
