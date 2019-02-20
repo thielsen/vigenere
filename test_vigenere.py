@@ -1,5 +1,6 @@
 from vigenere import VigenereCipher
 from vigenere import combine_character
+from vigenere import separate_character
 
 def test_encode():
       cipher = VigenereCipher("DONKEY")
@@ -26,6 +27,10 @@ def test_combine_character():
       assert combine_character("O", "R") == "F"
 
 def test_extend_keyword():
-       cipher = VigenereCipher("DONKEY")
-       extended = cipher.extend_keyword(20)
-       assert extended == "DONKEYDONKEYDONKEYDO"
+      cipher = VigenereCipher("DONKEY")
+      extended = cipher.extend_keyword(20)
+      assert extended == "DONKEYDONKEYDONKEYDO"
+
+def test_decode_separate_character():
+      assert separate_character("Y", "T") == "F"
+      assert separate_character("F", "R") == "O"
