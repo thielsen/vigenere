@@ -8,19 +8,18 @@ class VigenereCipher:
         return (self.keyword * repeats)[:number]
 
     def encode(self, plaintext):
-           plaintext = plaintext.replace(" ", "").upper()
-           cipher = []
-           keyword = self.extend_keyword(len(plaintext))
-           for p,k in zip(plaintext, keyword):
-               cipher.append(combine_character(p,k))
-           return "".join(cipher)   
-
+        return self._code(plaintext, combine_character)
+    
     def decode(self, ciphertext):
-           plain = []
-           keyword = self.extend_keyword(len(ciphertext))
-           for p,k in zip(ciphertext, keyword):
-               plain.append(separate_character(p,k))
-           return "".join(plain) 
+        return self._code(ciphertext, separate_character)
+    
+    def _code(self, text, combine_func):
+        text = text.replace(" ", "").upper()
+        combined = []
+        keyword = self.extend_keyword(len(text))
+        for p,k in zip(text, keyword):
+            combined.append(combine_func(p,k))
+        return "".join(combined)
 
 def combine_character(plain, keyword):
     plain = plain.upper()
